@@ -58,56 +58,82 @@ def index_text_file(txt_filename, idx_filename,
 record=[]
 record=open("victim.txt").readlines()
 
+# def search(txt_file,idx_file,key):
+#     flag=0
+#     idx_f=open(idx_file,"r")
+#     for line in idx_f:
+#         if re.match(key,line):
+#             flag=1
+#             l=line.split()
+#             n=len(l)
+#             txt_f=open(txt_file,"r")
+#             for i in range (1,n):
+#                 c=int(l[i])
+#                 l2=record[c-1].split('|')
+#             txt_f.close()
+#             n=int(l[1])
+#             l3=record[n-1].split('|')
+#             l3[6]=sys.argv[2]
+#             file1=open("victim.txt","w")
+#             file_size=len(record)
+#             record2=[]
+#             for i in range(1,file_size+1):
+#                 if(i!=n):
+#                     record2.append(record[i-1])
+
+#             file1.writelines(record2)
+#             file1.close()
+#             txt_fil=open("victim.txt","a")
+#             FIR_no=l3[0]
+#             vic_name=l3[1]
+#             acc_name=l3[2]
+#             case_date=l3[3]
+#             case_time=l3[4]
+#             case_desc=l3[5]
+#             case_stat=l3[6]
+#             entry=FIR_no+'|'+vic_name+'|'+acc_name+'|'+case_date+'|'+case_time+'|'+case_desc+'|'+case_stat+'|'+'\n'
+#             txt_fil.write(entry)
+#             print("\nFIR number:"+l3[0])
+#             print("Victim name:"+l3[1])
+#             print("Accused name:"+l3[2])
+#             print("Case date:"+l3[3])
+#             print("Case time:"+l3[4])
+#             print("Case description:"+l3[5])
+#             print("Case status:"+l3[6]+"\n")
+#             print("\nRecord modified.\n")
+#             txt_fil.close()
+#             index_text_file("victim.txt","index_file.idx")
+
+#     if(flag==0):
+#         print("No such record exist")
+#         return -1
+# 	#return l
+#     idx_f.close()
+
 def search(txt_file,idx_file,key):
     flag=0
-    idx_f=open(idx_file,"r")
-    for line in idx_f:
+    txt_f=open(txt_file,"r")
+    x=[]
+    for line in txt_f:
+        x.append(line)
+    
+    txt_f.close()
+    txt_f=open(txt_file,"w")
+    for line in x:
         if re.match(key,line):
             flag=1
             l=line.split()
-            n=len(l)
-            txt_f=open(txt_file,"r")
-            for i in range (1,n):
-                c=int(l[i])
-                l2=record[c-1].split('|')
-            txt_f.close()
-            n=int(l[1])
-            l3=record[n-1].split('|')
-            l3[6]=sys.argv[2]
-            file1=open("victim.txt","w")
-            file_size=len(record)
-            record2=[]
-            for i in range(1,file_size+1):
-                if(i!=n):
-                    record2.append(record[i-1])
-
-            file1.writelines(record2)
-            file1.close()
-            txt_fil=open("victim.txt","a")
-            FIR_no=l3[0]
-            vic_name=l3[1]
-            acc_name=l3[2]
-            case_date=l3[3]
-            case_time=l3[4]
-            case_desc=l3[5]
-            case_stat=l3[6]
-            entry=FIR_no+'|'+vic_name+'|'+acc_name+'|'+case_date+'|'+case_time+'|'+case_desc+'|'+case_stat+'|'+'\n'
-            txt_fil.write(entry)
-            print("\nFIR number:"+l3[0])
-            print("Victim name:"+l3[1])
-            print("Accused name:"+l3[2])
-            print("Case date:"+l3[3])
-            print("Case time:"+l3[4])
-            print("Case description:"+l3[5])
-            print("Case status:"+l3[6]+"\n")
-            print("\nRecord modified.\n")
-            txt_fil.close()
-            index_text_file("victim.txt","index_file.idx")
+            l1=l[0].split('|')
+            l1[6]=sys.argv[2]
+            line1=l1[0]+'|'+l1[1]+'|'+l1[2]+'|'+l1[3]+'|'+l1[4]+'|'+l1[5]+'|'+l1[6]+'|'+'\n'
+            print(line1)
+            txt_f.write(line1)
+            print("Record updated")
+        else:
+            txt_f.write(line)
 
     if(flag==0):
         print("No such record exist")
-        return -1
-	#return l
-    idx_f.close()
+    txt_f.close()
 
 search("victim.txt","index_file.idx",sys.argv[1])

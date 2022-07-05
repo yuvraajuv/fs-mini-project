@@ -50,9 +50,7 @@ def search(txt_file,idx_file,key):
 		if re.match(key,line):
 			flag=1
 			l=line.split()
-			l1=l[1].split('|')
-			l1[0]=l[0]
-			n=len(l1)
+			l1=l[0].split('|')
 			print("\nFIR number:"+l1[0])
 			print("Victim name:"+l1[1])
 			print("Accused name:"+l1[2])
@@ -61,7 +59,7 @@ def search(txt_file,idx_file,key):
 			print("Case description:"+l1[5])
 
 	if(flag==0):
-			print("No such record exist")
+		print("No such record exist")
 	txt_f.close()
 
 

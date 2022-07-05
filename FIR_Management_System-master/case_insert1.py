@@ -18,9 +18,9 @@ case_time=sys.argv[5]
 case_stat=sys.argv[6]
 for i in range(7,n):
 
-	case_desc1=case_desc1+sys.argv[i]+" "
+	case_desc1=case_desc1+sys.argv[i]+""
 
-entry=FIR_no+' '+'|'+vic_name+'|'+acc_name+'|'+case_date+'|'+case_time+'|'+case_desc1+'|'+case_stat+'|'+'\n'
+entry=FIR_no+'|'+vic_name+'|'+acc_name+'|'+case_date+'|'+case_time+'|'+case_desc1+'|'+case_stat+'|'+'\n'
 
 txt_fil.write(entry)
 

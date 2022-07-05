@@ -58,6 +58,18 @@ def index_text_file(txt_filename, idx_filename,
 record=[]
 record=open("victim.txt").readlines()
 
+def delete(txt_file,idx_file,key):
+    flag=0
+    txt_f=open(txt_file,"w")
+    for line in txt_f:
+        if re.match(key,line):
+            flag=1
+            line=""
+            print("Successfully deleted")
+
+    if(flag==0):
+        print("No such record exist")
+    txt_f.close()
 
 def search(txt_file,idx_file,key):
     flag=0
