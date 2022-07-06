@@ -1,4 +1,7 @@
-from tkinter import *
+try:
+    from tkinter import *
+except ImportError:
+    from Tkinter import *
 import os
 import subprocess
 
@@ -111,7 +114,7 @@ def add_victim() :
 
 def gett():
 
-	command='python case_insert1.py '+v1.get()+" "+v2.get()+" "+v3.get()+" "+v4.get()+" "+v5.get()+" "+v6.get()+" "+v7.get()
+	command='python3 case_insert1.py '+v1.get()+" "+v2.get()+" "+v3.get()+" "+v4.get()+" "+v5.get()+" "+v6.get()+" "+v7.get()
 	os.system(command)
 	print(command)
 
@@ -145,7 +148,7 @@ def search_victim() :
 
 def get1():
 
-	command='python case_search.py '+" "+vs3.get()
+	command='python3 case_search.py '+" "+vs3.get()
 
 
 
@@ -188,7 +191,7 @@ def delete_victim() :
 	display_frame(delete_victim_frame)
 
 def delete1():
-	command='python case_delete.py '+" "+vd3.get()
+	command='python3 case_delete.py '+" "+vd3.get()
 
 
 
@@ -203,7 +206,7 @@ def delete1():
 
 
 def get_modify():
-	command='python case_modify1.py '+" "+v3.get()+" "+vs4.get()
+	command='python3 case_modify1.py '+" "+v3.get()+" "+vs4.get()
 
 
 	print("modified")

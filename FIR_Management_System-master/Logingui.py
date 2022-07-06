@@ -4,7 +4,7 @@ import textwrap
 import sys
 
 def sin():
- os.system("python AddguiT.py")
+ os.system("python3 AddguiT.py")
 
 def printtext():
 	global entry_1,entry_2
