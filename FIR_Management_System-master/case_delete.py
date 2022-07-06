@@ -71,45 +71,73 @@ def delete(txt_file,idx_file,key):
         print("No such record exist")
     txt_f.close()
 
+#def search(txt_file,idx_file,key):
+#    flag=0
+#    idx_f=open(idx_file,"r")
+#    for line in idx_f:
+#        if re.match(key,line):
+#            flag=1
+#            l=line.split()
+#            n=len(l)
+#            txt_f=open(txt_file,"r")
+#            #print(record)
+
+    #         for i in range (1,n):
+    #             c=int(l[i])
+    #             #print(record[c-1])
+    #             l2=record[c-1].split('|')
+    #             print("\nFIR number:"+l2[0])
+    #             print("Victim name:"+l2[1])
+    #             print("Accused name:"+l2[2])
+    #             print("Case date:"+l2[3])
+    #             print("Case time:"+l2[4])
+    #             print("Case description:"+l2[5])
+    #             print("Case status:"+l2[6]+"\n")
+    #         txt_f.close()
+    #         n=len(l)
+    #         l2=[]
+    #         for i in range(1,n):
+    #             l2.append(int(l[i]))
+    #         file1=open("victim.txt","w")
+    #         n=len(record)
+    #         record2=[]
+    #         for i in range(1,n+1):  #line number in the original file(1 to ...)
+    #             if i not in l2:
+    #                 record2.append(record[i-1])
+    #         print("Record deleted.\n")
+    #         file1.writelines(record2)
+    #         file1.close()
+    #         index_text_file("victim.txt","index_file.idx")
+    # if(flag==0):
+    #     print("No such record exist")
+    # idx_f.close()
+
 def search(txt_file,idx_file,key):
     flag=0
-    idx_f=open(idx_file,"r")
-    for line in idx_f:
+    txt_f=open(txt_file,"r")
+    x=[]
+    n=0
+    for line in txt_f:
+        n+=1
+        x.append(line)
+    
+    txt_f.close()
+    txt_f=open(txt_file,"w")
+    i=0
+    for line in x:
         if re.match(key,line):
             flag=1
-            l=line.split()
-            n=len(l)
-            txt_f=open(txt_file,"r")
-            #print(record)
-            for i in range (1,n):
-                c=int(l[i])
-                #print(record[c-1])
-                l2=record[c-1].split('|')
-                print("\nFIR number:"+l2[0])
-                print("Victim name:"+l2[1])
-                print("Accused name:"+l2[2])
-                print("Case date:"+l2[3])
-                print("Case time:"+l2[4])
-                print("Case description:"+l2[5])
-                print("Case status:"+l2[6]+"\n")
-            txt_f.close()
-            n=len(l)
-            l2=[]
-            for i in range(1,n):
-                l2.append(int(l[i]))
-            file1=open("victim.txt","w")
-            n=len(record)
-            record2=[]
-            for i in range(1,n+1):  #line number in the original file(1 to ...)
-                if i not in l2:
-                    record2.append(record[i-1])
-            print("Record deleted.\n")
-            file1.writelines(record2)
-            file1.close()
-            index_text_file("victim.txt","index_file.idx")
+            print(line)
+            line=""
+            x[i]=line
+            txt_f.write(line)
+            print("Record updated")
+        else:
+            txt_f.write(line)
+        i+=1
 
     if(flag==0):
         print("No such record exist")
-    idx_f.close()
+    txt_f.close()
 
 search("victim.txt","index_file.idx",sys.argv[1])
